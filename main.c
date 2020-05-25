@@ -13,15 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "libasm.h"
-
-char		*ft_strcpy(char *dest, char *src);
-void		ft_bzero(void *str, unsigned int len);
-void		ft_write(int fd, char *c, int nb);
-void		ft_read(int fd, char buf[], int len);
-int			ft_strlen(char *str);
-int			ft_strcmp(char *str1, char *str2);
-char		*ft_strdup(char *str);
 
 void		follow4(void)
 {
@@ -43,7 +36,10 @@ void		follow3(void)
 	printf("*******************\n");
 	printf("test       ft_write\n");
 	printf("*******************\n");
-	ft_write(1, "je suis ecrit par ft_write\n", 26);
+	write(1, "je suis ecrit par ft_write\n", 27);
+	ft_write(1, "je suis ecrit par ft_write\n", 27);
+	write(16, "je suis ecrit par ft_write\n", 27);
+	ft_write(16, "je suis ecrit par ft_write\n", 27);
 	printf("\n\n\n");
 	printf("*******************\n");
 	printf("test        ft_read\n");
@@ -109,7 +105,6 @@ int			main(void)
 {
 	char	*strfull;
 	char	*strvide;
-	char	strdelete[8];
 
 	strfull = "je suis un string de longueur 32";
 	strvide = "";
@@ -118,8 +113,8 @@ int			main(void)
 	printf("*******************\n");
 	printf("strlen    :: la string \"%s\" a une longueur de %lu\n", strfull, strlen(strfull));
 	printf("strlen    :: la string \"%s\" a une longueur de %lu\n", strvide, strlen(strvide));
-	printf("ft_strlen :: la string \"%s\" a une longueur de %d\n", strfull, ft_strlen(strfull));
-	printf("ft_strlen :: la string \"%s\" a une longueur de %d\n", strvide, ft_strlen(strvide));
+	printf("ft_strlen :: la string \"%s\" a une longueur de %zu\n", strfull, ft_strlen(strfull));
+	printf("ft_strlen :: la string \"%s\" a une longueur de %zu\n", strvide, ft_strlen(strvide));
 	printf("\n\n\n");
 	follow1();
 	return (0);
