@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,12 +40,16 @@ void		follow3(void)
 	write(1, "je suis ecrit par ft_write\n", 27);
 	ft_write(1, "je suis ecrit par ft_write\n", 27);
 	write(16, "je suis ecrit par ft_write\n", 27);
+	printf("%s\n", strerror(errno));
 	ft_write(16, "je suis ecrit par ft_write\n", 27);
+	printf("%s\n", strerror(errno));
 	printf("\n\n\n");
 	printf("*******************\n");
 	printf("test        ft_read\n");
 	printf("*******************\n");
 	ft_read(0, buff, 9);
+	//ft_read(12, buff, 9);
+	//printf("%s\n", strerror(errno));
 	buff[9] = '\0';
 	ft_write(1, buff, 10);
 	printf("\n\n\n");
