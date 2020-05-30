@@ -10,27 +10,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-OBJS    	=	ft_strdup.o \
-				ft_strlen.o \
-				ft_strcpy.o \
-				ft_strcmp.o \
-				ft_write.o \
-				ft_strdup.o \
-				ft_read.o \
+SRCS		=	ft_read.s \
+				ft_strcmp.s \
+				ft_strcpy.s \
+				ft_strdup.s \
+				ft_strlen.s \
+				ft_write.s \
+
+OBJS    	=	$(SRCS:.s=.o)
+
+FLAGS		=	-f macho64
 
 NAME		=	libasm.a
 
 all :			${NAME}
 
-${NAME} :		
-				nasm -f macho64 ft_strlen.s
-				nasm -f macho64 ft_strcpy.s
-				nasm -f macho64 ft_read.s
-				nasm -f macho64 ft_write.s
-				nasm -f macho64 ft_strcmp.s
-				nasm -f macho64 ft_strdup.s
+${NAME} :		${OBJS}
 				ar rc ${NAME} ${OBJS}
 				ranlib ${NAME}
+
+%.o:			%.s
+				nasm ${FLAGS} $< -o $@
 
 clean :			
 				rm -rf ${OBJS}
