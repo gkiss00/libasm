@@ -24,6 +24,7 @@ _ft_strdup:
     ret                     ;return
 
 _error_null:
+    mov     rax, 0
     ret
 
 _error_malloc:
