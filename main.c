@@ -21,6 +21,7 @@ void		follow4(void)
 {
 	char	*str;
 	char	*duplicated;
+	char	*nullable;
 
 	str = "je vais etre dupliquer";
 	printf("*******************\n");
@@ -29,6 +30,8 @@ void		follow4(void)
 	duplicated = ft_strdup(str);
 	printf("la string str => \"%s\" et duplicated => \"%s\" sont les memes\n", str, duplicated);
 	free(duplicated);
+	nullable = ft_strdup(NULL);
+	printf("la string str => \"%s\" et duplicated => \"%s\" sont les memes\n", NULL, nullable);
 }
 
 void		follow3(void)
